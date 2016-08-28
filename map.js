@@ -298,7 +298,7 @@ $(regions[24].node).click(function(){updateState(24)});
 $(regions[25].node).click(function(){updateState(25)});
 $(regions[26].node).click(function(){updateState(26)});
 $(regions[27].node).click(function(){updateState(27)});
-$(regions[28].node).click(function(){updateState(29)});
+$(regions[28].node).click(function(){updateState(28)});
 $(regions[29].node).click(function(){updateState(29)});
 $(regions[30].node).click(function(){updateState(30)});
 $(regions[31].node).click(function(){updateState(31)});
