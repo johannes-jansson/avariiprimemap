@@ -1,3 +1,5 @@
+//var fs = require("fs");
+
 // Set colors here
 var colormap = new Map();
 colormap.set("empty", "#333333");
@@ -256,20 +258,7 @@ function updateState(i) {
 $(document).ready(function(){
 });
 
-// var i = 0;
-// for(i = 0; i< regions.length; i++) {
-//   $(regions[i].node).click(function(){
-// 
-//     console.log("hej");
-//     console.log(this);
-// 
-//     //console.log(regions[i]);
-//     // console.log(regions.indexOf(this.node));
-//     // updateState(regions.indexOf(this.node));
-//   });
-// }
-
-//{{{
+//{{{ Manually attach listeners...
 $(regions[0].node).click(function(){updateState(0)});
 $(regions[1].node).click(function(){updateState(1)});
 $(regions[2].node).click(function(){updateState(2)});
@@ -374,3 +363,26 @@ $(regions[100].node).click(function(){updateState(100)});
 $(regions[101].node).click(function(){updateState(101)});
 $(regions[102].node).click(function(){updateState(102)});
 //}}}
+
+function save(){
+  localStorage.setItem('states',states);
+
+  //fs.writeFile( "states.json", JSON.stringify( states ), "utf8", function(){
+  //  alert("Wrote state to states.json!");
+  //});
+}
+
+function load(){
+  states = localStorage.getItem('states').split(',');
+  redrawMap();
+  //states = require('./states.json');
+}
+
+function reset(){
+  states = [];
+  for(var i = 0; i< regions.length; i++) {
+    states.push("empty");
+  }
+  redrawMap();
+}
+
