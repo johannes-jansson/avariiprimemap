@@ -235,6 +235,8 @@ for(var i = 0; i< regions.length; i++) {
   states.push("empty");
 }
 ///}}}
+//var img = paper.image("img/bg.jpeg", 0, 0, 0, 0);
+
 
 function redrawMap() {
   for(var i = 0; i< regions.length; i++) {
