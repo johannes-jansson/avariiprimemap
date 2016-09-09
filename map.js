@@ -262,6 +262,13 @@ $(document).ready(function(){
 });
 
 //{{{ Manually attach listeners...
+/*
+	$('.cls-1').on('click', function(){
+		console.log('.cls-1:');
+		var state = $(this).attr('data-state');
+		updateState(state);
+	});
+	*/
 $(regions[0].node).click(function(){updateState(0)});
 $(regions[1].node).click(function(){updateState(1)});
 $(regions[2].node).click(function(){updateState(2)});
