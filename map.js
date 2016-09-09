@@ -241,6 +241,7 @@ for(var i = 0; i< regions.length; i++) {
 function redrawMap() {
   for(var i = 0; i< regions.length; i++) {
     regions[i].attr({"fill":colormap.get(states[i])});
+    regions[i].attr({"stroke opacity":0});
   }
 }
 redrawMap();
