@@ -7,7 +7,8 @@
       body {
         background-color: black;
       }
-      .themap {
+      /*.themap {*/
+      #map {
         background-image: url(img/bg4.jpg);
         background-repeat: no-repeat;
         background-size: 1191px, 842px;
@@ -17,8 +18,16 @@
         margin:auto;
         display:block;
       }
+      button {
+        position:relative;
+        top:50%; 
+        left:90%;
+        background-color: #222222;
+        border-color: #333333;
+        color: white;
+        margin-top: 5px;
+      }
       .cls-1 {
-        stroke-opacity: 0;
         /*stroke-width:0;*/
         opacity: 0.5;
       }
@@ -28,11 +37,12 @@
     </style>
   </head>
   <body>
-    <div id="map" class="themap">
+    <div id="map"></div>
+    <div id="buttons">
+      <button onclick="save()">Save</button>
+      <button onclick="load()">Load</button>
+      <button onclick="reset()">Reset</button>
     </div>
-    <button onclick="save()">Save</button>
-    <button onclick="load()">Load</button>
-    <button onclick="reset()">Reset</button>
     <script src="raphael.min.js"></script>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script src="map.js"></script>

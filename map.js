@@ -225,7 +225,7 @@ Layer_4.push( path_a , path_b , path_c , path_d , path_e , path_f , path_g , pat
 
 // Change some stuff, 'cause I'm to lazy to ^F
 for(var i = 0; i< regions.length; i++) {
-  regions[i].attr({"stroke-width":1});
+  regions[i].attr({"stroke-width":3});
   regions[i].attr({"stroke":"black"});
 }
 
@@ -235,13 +235,10 @@ for(var i = 0; i< regions.length; i++) {
   states.push("empty");
 }
 ///}}}
-//var img = paper.image("img/bg.jpeg", 0, 0, 0, 0);
-
 
 function redrawMap() {
   for(var i = 0; i< regions.length; i++) {
     regions[i].attr({"fill":colormap.get(states[i])});
-    regions[i].attr({"stroke opacity":0});
   }
 }
 redrawMap();
@@ -376,16 +373,11 @@ $(regions[102].node).click(function(){updateState(102)});
 
 function save(){
   localStorage.setItem('states',states);
-
-  //fs.writeFile( "states.json", JSON.stringify( states ), "utf8", function(){
-  //  alert("Wrote state to states.json!");
-  //});
 }
 
 function load(){
   states = localStorage.getItem('states').split(',');
   redrawMap();
-  //states = require('./states.json');
 }
 
 function reset(){
