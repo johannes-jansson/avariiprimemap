@@ -12,6 +12,7 @@ colormap.set("bteam", "#FF0000");
 var rsr = Raphael('map', '1190.55', '841.89');
 var regions = [];
 
+//{{{
 regions.push(rsr.path("M1041.6,321.3c-10.7,0.6-21.4,1.4-32.1,2.5c-6.2,8.9-12.3,17.3-17.7,25c5.5,7.7,11.5,16.1,17.7,25c10.7,1.1,21.4,1.9,32.1,2.5c4.9-8.9,10.2-18.1,15.7-27.5C1051.8,339.4,1046.5,330.2,1041.6,321.3z").attr({class: 'cls-1','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
 regions.push(rsr.path("M1137.8,323.8c-10.7-1.1-21.4-1.9-32.1-2.5c-4.9,8.9-10.2,18.1-15.7,27.5c5.5,9.4,10.8,18.6,15.7,27.5c10.7-0.6,21.4-1.4,32.1-2.5c6.2-8.9,12.3-17.3,17.7-25C1150,341.1,1144,332.7,1137.8,323.8z").attr({class: 'cls-1','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
 regions.push(rsr.path("M1137.8,373.8c-10.7,1.1-21.4,1.9-32.1,2.5c-5.8,9.4-11.6,19.1-17,28.8c4.6,9.1,8.6,17.9,11.7,26.3c8.9-1.7,17.8-4.2,26.7-7.5c7.1-10,14.5-19.7,21.7-28.8C1146,388.8,1142.2,381.6,1137.8,373.8z").attr({class: 'cls-1','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
@@ -52,17 +53,13 @@ regions.push(rsr.path("M27.4,550.9c13.5,0.1,27,0.2,40.6,0.3c6.8,11.5,13.7,23.2,2
 regions.push(rsr.path("M88.6,586.1c13.5,0.2,26.9,0.3,40.4,0.4c6.8,11.7,13.6,23.5,20.4,35.2c-6.6,11.7-13.1,23.3-19.4,34.9c-13.1-0.2-26.3-0.6-39.4-1c-7-11.8-14.1-23.6-21.1-35.3C75.6,609,82.1,597.6,88.6,586.1z").attr({class: 'cls-1','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
 regions.push(rsr.path("M29.3,618.8c13.3,0.6,26.7,1.1,40,1.5c7.1,11.7,14.1,23.5,21.1,35.3c-6.1,11.3-12.1,22.6-17.9,33.7c-12.9-0.7-25.8-1.6-38.7-2.7C26.4,674.8,19,663,11.6,651.4C17.3,640.7,23.2,629.8,29.3,618.8z").attr({class: 'cls-1','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
 regions.push(rsr.path("M90.5,655.6c13.1,0.5,26.3,0.8,39.4,1c6.8,11.8,13.5,23.6,20.1,35.4c-6.3,11.6-12.5,23.2-18.4,34.7c-12.6-0.4-25.2-0.9-37.8-1.6c-7-11.9-14.1-23.9-21.2-35.8C78.3,678.2,84.3,666.9,90.5,655.6z").attr({class: 'cls-1','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
+//}}}
 
 var states = [];
-
 for(var i = 0; i < regions.length; i++) {
-  var region = regions[i];
-
   // Change some stuff, 'cause I'm to lazy to ^F
-  region.attr({"stroke-width":3});
-  region.attr({"stroke":"black"});
-
-  // Copy everything to Layer_4 and initiate states array
+  regions[i].attr({"stroke-width":3,"stroke":"black"});
+  // Initiate states array
   states.push("empty");
 }
 
@@ -73,9 +70,9 @@ function redrawMap() {
     regions[i].attr({"fill":colormap.get(states[i])});
   }
 }
-redrawMap();
 
 function updateState(i) {
+  console.log("Updating "+i);
   if (states[i] == "empty") {
     states[i] = "fight";
   } else if (states[i] == "fight") {
@@ -87,10 +84,7 @@ function updateState(i) {
   }
   redrawMap();
 }
-$(document).ready(function(){
-});
 
-//{{{ Manually attach listeners...
 /*
 	$('.cls-1').on('click', function(){
 		console.log('.cls-1:');
@@ -98,7 +92,15 @@ $(document).ready(function(){
 		updateState(state);
 	});
 	*/
-console.log(regions.length);
+
+/*
+for(var i=0; i<regions.length; i++) {
+    console.log(i);
+    $('regions['+i+'].node').click(function(){updateState(i)});
+}
+*/
+
+//{{{ Manually attach listeners...
 $(regions[0].node).click(function(){updateState(0)});
 $(regions[1].node).click(function(){updateState(1)});
 $(regions[2].node).click(function(){updateState(2)});
@@ -140,7 +142,6 @@ $(regions[37].node).click(function(){updateState(37)});
 $(regions[38].node).click(function(){updateState(38)});
 $(regions[39].node).click(function(){updateState(39)});
 //}}}
-
 function save(){
   localStorage.setItem('states',states);
 }
@@ -151,10 +152,10 @@ function load(){
 }
 
 function reset(){
-  states = [];
   for(var i = 0; i< regions.length; i++) {
-    states.push("empty");
+    states[i]="empty";
   }
   redrawMap();
 }
 
+redrawMap();
