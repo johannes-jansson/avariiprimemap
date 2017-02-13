@@ -1,5 +1,3 @@
-//var fs = require("fs");
-
 // Set colors here
 var colormap = new Map();
 colormap.set("empty", "#333333");
@@ -7,8 +5,41 @@ colormap.set("fight", "#FF6900");
 colormap.set("ateam", "#0000FF");
 colormap.set("bteam", "#FF0000");
 
-//{{{
-// Start creating map
+function drawMap() {
+  for(var i = 0; i< regions.length; i++) {
+    regions[i].attr({"fill":colormap.get(states[i])});
+  }
+}
+
+function updateState(i) {
+  if (states[i] == "empty") {
+    states[i] = "fight";
+  } else if (states[i] == "fight") {
+    states[i] = "ateam";
+  } else if (states[i] == "ateam") {
+    states[i] = "bteam";
+  } else if (states[i] == "bteam") {
+    states[i] = "empty";
+  }
+  drawMap();
+}
+
+function save(){
+  localStorage.setItem('states',states);
+}
+
+function load(){
+  states = localStorage.getItem('states').split(',');
+  drawMap();
+}
+
+function reset(){
+  for(var i = 0; i< regions.length; i++) {
+    states[i]="empty";
+  }
+  drawMap();
+}
+
 var rsr = Raphael('map', '1190.55', '841.89');
 var regions = [];
 
@@ -57,31 +88,8 @@ regions.push(rsr.path("M90.5,655.6c13.1,0.5,26.3,0.8,39.4,1c6.8,11.8,13.5,23.6,2
 
 var states = [];
 for(var i = 0; i < regions.length; i++) {
-  // Change some stuff, 'cause I'm to lazy to ^F
   regions[i].attr({"stroke-width":3,"stroke":"black"});
-  // Initiate states array
   states.push("empty");
-}
-
-///}}}
-
-function redrawMap() {
-  for(var i = 0; i< regions.length; i++) {
-    regions[i].attr({"fill":colormap.get(states[i])});
-  }
-}
-
-function updateState(i) {
-  if (states[i] == "empty") {
-    states[i] = "fight";
-  } else if (states[i] == "fight") {
-    states[i] = "ateam";
-  } else if (states[i] == "ateam") {
-    states[i] = "bteam";
-  } else if (states[i] == "bteam") {
-    states[i] = "empty";
-  }
-  redrawMap();
 }
 
 // Connect event listeners
@@ -91,20 +99,4 @@ for(var i=0; i<regions.length; i++) {
   })(i);
 }
 
-function save(){
-  localStorage.setItem('states',states);
-}
-
-function load(){
-  states = localStorage.getItem('states').split(',');
-  redrawMap();
-}
-
-function reset(){
-  for(var i = 0; i< regions.length; i++) {
-    states[i]="empty";
-  }
-  redrawMap();
-}
-
-redrawMap();
+drawMap();
