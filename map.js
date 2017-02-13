@@ -10,7 +10,6 @@ colormap.set("bteam", "#FF0000");
 //{{{
 // Start creating map
 var rsr = Raphael('map', '1190.55', '841.89');
-var Layer_4 = rsr.set();
 var regions = [];
 
 regions.push(rsr.path("M1041.6,321.3c-10.7,0.6-21.4,1.4-32.1,2.5c-6.2,8.9-12.3,17.3-17.7,25c5.5,7.7,11.5,16.1,17.7,25c10.7,1.1,21.4,1.9,32.1,2.5c4.9-8.9,10.2-18.1,15.7-27.5C1051.8,339.4,1046.5,330.2,1041.6,321.3z").attr({class: 'cls-1',"data-name": 'Layer 4',parent: 'Layer_4','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
@@ -54,11 +53,8 @@ regions.push(rsr.path("M88.6,586.1c13.5,0.2,26.9,0.3,40.4,0.4c6.8,11.7,13.6,23.5
 regions.push(rsr.path("M29.3,618.8c13.3,0.6,26.7,1.1,40,1.5c7.1,11.7,14.1,23.5,21.1,35.3c-6.1,11.3-12.1,22.6-17.9,33.7c-12.9-0.7-25.8-1.6-38.7-2.7C26.4,674.8,19,663,11.6,651.4C17.3,640.7,23.2,629.8,29.3,618.8z").attr({class: 'cls-1',"data-name": 'Layer 4',parent: 'Layer_4','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
 regions.push(rsr.path("M90.5,655.6c13.1,0.5,26.3,0.8,39.4,1c6.8,11.8,13.5,23.6,20.1,35.4c-6.3,11.6-12.5,23.2-18.4,34.7c-12.6-0.4-25.2-0.9-37.8-1.6c-7-11.9-14.1-23.9-21.2-35.8C78.3,678.2,84.3,666.9,90.5,655.6z").attr({class: 'cls-1',"data-name": 'Layer 4',parent: 'Layer_4','stroke-width': '0','stroke-opacity': '1','fill': '#000000'}).data('id', 'path_a'));
 
-Layer_4.attr({'id': 'Layer_4','data-name': 'Layer 4','name': 'Layer_4'});
-var rsrGroups = [Layer_4];
-
-// Copy everything to Layer_4 and initiate states array
 var states = [];
+
 for(var i = 0; i < regions.length; i++) {
   var region = regions[i];
 
@@ -66,7 +62,7 @@ for(var i = 0; i < regions.length; i++) {
   region.attr({"stroke-width":3});
   region.attr({"stroke":"black"});
 
-  Layer_4.push(region);
+  // Copy everything to Layer_4 and initiate states array
   states.push("empty");
 }
 
