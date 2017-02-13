@@ -72,7 +72,6 @@ function redrawMap() {
 }
 
 function updateState(i) {
-  console.log("Updating "+i);
   if (states[i] == "empty") {
     states[i] = "fight";
   } else if (states[i] == "fight") {
@@ -85,63 +84,13 @@ function updateState(i) {
   redrawMap();
 }
 
-/*
-	$('.cls-1').on('click', function(){
-		console.log('.cls-1:');
-		var state = $(this).attr('data-state');
-		updateState(state);
-	});
-	*/
-
-/*
+// Connect event listeners
 for(var i=0; i<regions.length; i++) {
-    console.log(i);
-    $('regions['+i+'].node').click(function(){updateState(i)});
+  (function(i){
+    $(regions[i].node).click(function(){updateState(i)});
+  })(i);
 }
-*/
 
-//{{{ Manually attach listeners...
-$(regions[0].node).click(function(){updateState(0)});
-$(regions[1].node).click(function(){updateState(1)});
-$(regions[2].node).click(function(){updateState(2)});
-$(regions[3].node).click(function(){updateState(3)});
-$(regions[4].node).click(function(){updateState(4)});
-$(regions[5].node).click(function(){updateState(5)});
-$(regions[6].node).click(function(){updateState(6)});
-$(regions[7].node).click(function(){updateState(7)});
-$(regions[8].node).click(function(){updateState(8)});
-$(regions[9].node).click(function(){updateState(9)});
-$(regions[10].node).click(function(){updateState(10)});
-$(regions[11].node).click(function(){updateState(11)});
-$(regions[12].node).click(function(){updateState(12)});
-$(regions[13].node).click(function(){updateState(13)});
-$(regions[14].node).click(function(){updateState(14)});
-$(regions[15].node).click(function(){updateState(15)});
-$(regions[16].node).click(function(){updateState(16)});
-$(regions[17].node).click(function(){updateState(17)});
-$(regions[18].node).click(function(){updateState(18)});
-$(regions[19].node).click(function(){updateState(19)});
-$(regions[20].node).click(function(){updateState(20)});
-$(regions[21].node).click(function(){updateState(21)});
-$(regions[22].node).click(function(){updateState(22)});
-$(regions[23].node).click(function(){updateState(23)});
-$(regions[24].node).click(function(){updateState(24)});
-$(regions[25].node).click(function(){updateState(25)});
-$(regions[26].node).click(function(){updateState(26)});
-$(regions[27].node).click(function(){updateState(27)});
-$(regions[28].node).click(function(){updateState(28)});
-$(regions[29].node).click(function(){updateState(29)});
-$(regions[30].node).click(function(){updateState(30)});
-$(regions[31].node).click(function(){updateState(31)});
-$(regions[32].node).click(function(){updateState(32)});
-$(regions[33].node).click(function(){updateState(33)});
-$(regions[34].node).click(function(){updateState(34)});
-$(regions[35].node).click(function(){updateState(35)});
-$(regions[36].node).click(function(){updateState(36)});
-$(regions[37].node).click(function(){updateState(37)});
-$(regions[38].node).click(function(){updateState(38)});
-$(regions[39].node).click(function(){updateState(39)});
-//}}}
 function save(){
   localStorage.setItem('states',states);
 }
