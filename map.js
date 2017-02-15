@@ -40,7 +40,7 @@ function reset(){
   drawMap();
 }
 
-var rsr = Raphael('map', '1190.55', '841.89');
+var rsr = Raphael('map', '1241', '877.5');
 var regions = [];
 
 //{{{
