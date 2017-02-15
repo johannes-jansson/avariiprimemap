@@ -131,7 +131,7 @@ regions.push(rsr.path("M90.5,655.6c13.1,0.5,26.3,0.8,39.4,1c6.8,11.8,13.5,23.6,2
 
 var states = [];
 for(var i = 0; i < regions.length; i++) {
-  regions[i].attr({class: 'cls-1','stroke-width': '3','stroke-opacity': '1','stroke':'black','fill': '#000000'}).data('id', 'path_a');
+  regions[i].attr({class: 'hexagon new','stroke-width': '3','stroke-opacity': '1','stroke':'black','fill': '#000000'}).data('id', 'path_a');
   states.push("empty");
 }
 
