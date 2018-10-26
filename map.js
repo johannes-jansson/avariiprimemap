@@ -47,7 +47,7 @@ function newRound() {
   }
 }
 
-var rsr = Raphael('map', '1191', '842');
+var rsr = Raphael('map', '1200', '848');
 var regions = [];
 
 //{{{

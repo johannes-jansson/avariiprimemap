@@ -8,10 +8,11 @@
         background-color: black;
       }
       #map {
-        background-image: url(img/s2/background-POI-01.png);
+        background-image: url(img/s3/background_2.jpeg);
         background-repeat: no-repeat;
-        background-size: 1191px, 842px;
-        background-position: top center;
+        background-size: 1200px, 696px;
+        /*background-size: 1200px, 848px;*/
+        background-position: bottom center;
       }
       div svg {
         margin:auto;
@@ -27,10 +28,14 @@
         margin-top: 5px;
       }
       .new {
-        opacity: 0.7;
+        stroke-opacity:1 !important;
+        fill-opacity: 0.7;
+        /* opacity: 0.7; */
       }
       .old {
-        opacity: 0.35;
+        stroke-opacity:1 !important;
+        fill-opacity: 0.35;
+        /* opacity: 0.35; */
       }
       .hexagon {
         stroke-width:3;
@@ -38,6 +43,9 @@
         stroke-color:'red';
         fill:'red';
       } 
+      path.hexagon {
+        stroke: red;
+      }
       .hexagon:hover {
         opacity: 0.9;
       }
