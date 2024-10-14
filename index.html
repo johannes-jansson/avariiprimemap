@@ -1,71 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avarii</title>
-    <style type="text/css">
-      body {
-        background-color: black;
-      }
-      #map {
-        background-image: url(img/s5/bg1.png);
-        background-repeat: no-repeat;
-        background-size: 2048, 1256;
-        background-position: center;
-      }
-      div svg {
-        margin:auto;
-        display:block;
-        /*width: 1900;*/
-        /*height: 1200;*/
-      }
-      button {
-        position:relative;
-        top:50%; 
-        left:80%;
-        background-color: #222222;
-        border-color: #333333;
-        color: white;
-        margin-top: 5px;
-      }
-      .new {
-        stroke-opacity:1 !important;
-        fill-opacity: 0.7;
-        /* opacity: 0.7; */
-      }
-      .old {
-        stroke-opacity:1 !important;
-        fill-opacity: 0.35;
-        /* opacity: 0.35; */
-      }
-      .hexagon {
-        stroke-width:3;
-        stroke-opacity:1;
-        stroke-color:'red';
-        fill:'red';
-      } 
-      path {
-        stroke: #FF0000;
-        stroke-opacity: 0.3;
-        stroke-width: 10;
-      }
-      /*
-      path.hexagon {
-        stroke: none;
-      }
-      */
-      .hexagon:hover {
-        opacity: 0.9;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="map"></div>
-    <div id="buttons">
-      <button onclick="save()">Save</button>
-      <button onclick="load()">Load</button>
-      <button onclick="reset()">Reset</button>
-      <button onclick="newRound()">New round</button>
+    <div class="container">
+      <img src="img/s5/bg1.png" alt="Background Image" class="background-image">
+      <div class="map" id="map"></div>
+      <div class="buttons" id="buttons">
+        <button class="dark-button" onclick="save()">Save</button>
+        <button class="dark-button" onclick="load()">Load</button>
+        <button class="dark-button" onclick="reset()">Reset</button>
+        <button class="dark-button" onclick="newRound()">New round</button>
+      </div>
     </div>
     <script src="raphael.min.js"></script>
     <script type="text/javascript" src="jquery.min.js"></script>

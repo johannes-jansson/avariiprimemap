@@ -1,0 +1,91 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+.container {
+    position: relative;
+    width: 2048px;
+    height: 1256px;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+.map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.dark-button {
+    padding: 10px 20px;
+    background-color: #333333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.dark-button:hover {
+    background-color: #555555;
+}
+
+.new {
+  stroke-opacity:1 !important;
+  fill-opacity: 0.7;
+  /* opacity: 0.7; */
+}
+.old {
+  stroke-opacity:1 !important;
+  fill-opacity: 0.35;
+  /* opacity: 0.35; */
+}
+.hexagon {
+  stroke-width:3;
+  stroke-opacity:1;
+  stroke-color:'red';
+  fill:'red';
+} 
+path {
+  stroke: #FF0000;
+  stroke-opacity: 0.3;
+  stroke-width: 10;
+}
+.hexagon:hover {
+  opacity: 0.9;
+}
